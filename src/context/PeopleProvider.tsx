@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { PeopleContext } from "./PeopleContext"
-import { Person } from "../types";
-import { getPeople } from "../api";
+import { useEffect, useState } from 'react';
+import { PeopleContext } from './PeopleContext';
+import { Person } from '../types';
+import { getPeople } from '../api';
 
 type PeopleProviderType = {
   children: React.ReactNode;
-}
+};
 
-export const PeopleProvider: React.FC<PeopleProviderType> = (props) => {
+export const PeopleProvider: React.FC<PeopleProviderType> = props => {
   const { children } = props;
 
   const [people, setPeople] = useState<Person[]>([]);
@@ -24,18 +24,16 @@ export const PeopleProvider: React.FC<PeopleProviderType> = (props) => {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
   }, []);
 
   const value = {
     people,
     isLoading,
     errorMessage,
-  }
+  };
 
   return (
-    <PeopleContext.Provider value={value}>
-      {children}
-    </PeopleContext.Provider>
-  )
-}
+    <PeopleContext.Provider value={value}>{children}</PeopleContext.Provider>
+  );
+};

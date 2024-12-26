@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { PeopleContext } from '../context/PeopleContext';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { PersonLink } from './PersonLink';
 
@@ -30,6 +30,7 @@ export const PeopleTable = () => {
           const isSelected = location.pathname === `/people/${person.slug}`;
           const mother = people.find(p => p.name === person.motherName);
           const father = people.find(p => p.name === person.fatherName);
+
           return (
             <tr
               data-cy="person"
@@ -44,10 +45,18 @@ export const PeopleTable = () => {
               <td>{person.born}</td>
               <td>{person.died}</td>
               <td>
-                {mother ? <PersonLink person={mother} /> : person.motherName || '-'}
+                {mother ? (
+                  <PersonLink person={mother} />
+                ) : (
+                  person.motherName || '-'
+                )}
               </td>
               <td>
-                {father ? <PersonLink person={father} /> : person.fatherName || '-'}
+                {father ? (
+                  <PersonLink person={father} />
+                ) : (
+                  person.fatherName || '-'
+                )}
               </td>
             </tr>
           );

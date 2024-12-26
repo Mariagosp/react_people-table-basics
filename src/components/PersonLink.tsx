@@ -8,9 +8,6 @@ type Props = {
 
 export const PersonLink: React.FC<Props> = props => {
   const { person } = props;
-  // if (!person) {
-  //   return <span>-</span>
-  // }
 
   return (
     <Link

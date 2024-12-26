@@ -5,6 +5,7 @@ import { PeopleTable } from '../components/PeopleTable';
 
 export const PeoplePage = () => {
   const { people, isLoading, errorMessage } = useContext(PeopleContext);
+
   return (
     <>
       <h1 className="title">People Page</h1>
@@ -20,23 +21,16 @@ export const PeoplePage = () => {
                   There are no people on the server
                 </p>
               )}
-                {errorMessage && (
-                  <p data-cy="peopleLoadingError" className="has-text-danger">
+              {errorMessage && (
+                <p data-cy="peopleLoadingError" className="has-text-danger">
                   Something went wrong
                 </p>
               )}
-              {/* <p data-cy="peopleLoadingError" className="has-text-danger">
-              Something went wrong
-            </p>
-
-            <p data-cy="noPeopleMessage">There are no people on the server</p> */}
-
               <PeopleTable />
             </>
           )}
         </div>
       </div>
     </>
-
   );
 };
